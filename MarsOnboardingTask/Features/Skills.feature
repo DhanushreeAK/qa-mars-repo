@@ -1,33 +1,62 @@
-Feature: This test suite runs Skills test scenarios
+Feature: This test suite runs Skills related test scenarios
 
 
-Scenario: 1. Verify user is able to add known skills with experience level
+Scenario Outline: 1. Verify user is able to add Skill with experience level
 Given User logs into Mars application
 When User clicks on the Skills tab
-And User adds 'C#' skill with 'Beginner' experience level into the Skills list
-Then The 'C#' skill with 'Beginner' experience level should be added to Skills list
+And User adds '<Skill>' skill with '<Experience Level>' experience level into the Skills list
+Then The '<Skill>' skill with '<Experience Level>' experience level should be added to Skills list
 
-Scenario: 2. Verify user is able to update an existing Skill with new experience level
+Examples: 
+| Skill | Experience Level |
+|  C#  |   Beginner        |
+|  Java  |   Beginner        |
+
+
+Scenario Outline: 2. Verify user is able to update an existing Skill with new experience level
 Given User logs into Mars application
 When User clicks on the Skills tab
-And User edits the 'C#' skill with 'Intermediate' experience level 
-Then The experience level for 'C#' skill should be updated to 'Intermediate'
+And User edits the '<Skill>' skill with '<Experience Level>' experience level 
+Then The experience level for '<Skill>' skill should be updated to '<Experience Level>'
 
-Scenario: 3. Verify user is able to delete an existing Skill
+Examples: 
+| Skill | Experience Level |
+|  C#  |  Intermediate     |
+
+
+Scenario Outline: 3. Verify user is able to delete an existing Skill
 Given User logs into Mars application
 When User clicks on the Skills tab
-And User deletes the skill 'C#'
-Then The skill 'C#' should be deleted successfully
+And User deletes the skill '<Skill>'
+Then The skill '<Skill>' should be deleted successfully
 
-Scenario: 4. Verify if user is able to add the already existing skill in the Skills section under Profile page 
+Examples: 
+| Skill |
+|  C#   |
+
+Scenario Outline: 4. Verify if user is able to add the already existing skill in the Skills section under Profile page 
 Given User logs into Mars application
 When User clicks on the Skills tab
-And User adds 'Manual Testing' skill with 'Expert' experience level into the Skills list
-And User adds skill 'Manual Tesing' with 'Expert' experience level that is already present in their skills list
-Then The skill 'Manual Testing' should not be added again in the skills list
+And User adds '<Skill>' skill with '<Experience Level>' experience level into the Skills list
+And User adds skill '<Skill>' with '<Experience Level>' experience level that is already present in their skills list
+Then The skill '<Skill>' should not be added again in the skills list
 
-Scenario: 5. Verify if user is able to add a skill in the Skills section under Profile page with invalid data
+Examples: 
+| Skill          | Experience Level |
+| Manual Testing | Expert           |
+| Manual Testing | Expert           |
+
+
+
+Scenario Outline: 5. Verify if user is able to add a skill in the Skills section under Profile page with invalid data
 Given User logs into Mars application
 When User clicks on the Skills tab
-And User adds '' skill with 'Beginner' experience level into the Skills list
-Then Invalid 'skill' should not be added and error message should be displayed
+And User adds '<Skill>' skill with '<Experience Level>' experience level into the Skills list
+Then Invalid '<Skill>' should not be added and error message should be displayed
+
+Examples: 
+| Skill | Experience Level |
+|       | Beginner         |
+|       |                  |
+| ABC   |                  |
+|  !!@!@#     |   Basic               |

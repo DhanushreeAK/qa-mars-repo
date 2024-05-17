@@ -20,8 +20,8 @@ namespace MarsOnboardingTask.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("This test suite runs Skills test scenarios")]
-    public partial class ThisTestSuiteRunsSkillsTestScenariosFeature
+    [NUnit.Framework.DescriptionAttribute("This test suite runs Skills related test scenarios")]
+    public partial class ThisTestSuiteRunsSkillsRelatedTestScenariosFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -35,7 +35,7 @@ namespace MarsOnboardingTask.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "This test suite runs Skills test scenarios", null, ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "This test suite runs Skills related test scenarios", null, ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,12 +74,16 @@ namespace MarsOnboardingTask.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("1. Verify user is able to add known skills with experience level")]
-        public void _1_VerifyUserIsAbleToAddKnownSkillsWithExperienceLevel()
+        [NUnit.Framework.DescriptionAttribute("1. Verify user is able to add Skill with experience level")]
+        [NUnit.Framework.TestCaseAttribute("C#", "Beginner", null)]
+        [NUnit.Framework.TestCaseAttribute("Java", "Beginner", null)]
+        public void _1_VerifyUserIsAbleToAddSkillWithExperienceLevel(string skill, string experienceLevel, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1. Verify user is able to add known skills with experience level", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            argumentsOfScenario.Add("Skill", skill);
+            argumentsOfScenario.Add("Experience Level", experienceLevel);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1. Verify user is able to add Skill with experience level", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -97,10 +101,10 @@ testRunner.Given("User logs into Mars application", ((string)(null)), ((TechTalk
 testRunner.When("User clicks on the Skills tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
-testRunner.And("User adds \'C#\' skill with \'Beginner\' experience level into the Skills list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And(string.Format("User adds \'{0}\' skill with \'{1}\' experience level into the Skills list", skill, experienceLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
-testRunner.Then("The \'C#\' skill with \'Beginner\' experience level should be added to Skills list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then(string.Format("The \'{0}\' skill with \'{1}\' experience level should be added to Skills list", skill, experienceLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -108,44 +112,14 @@ testRunner.Then("The \'C#\' skill with \'Beginner\' experience level should be a
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("2. Verify user is able to update an existing Skill with new experience level")]
-        public void _2_VerifyUserIsAbleToUpdateAnExistingSkillWithNewExperienceLevel()
+        [NUnit.Framework.TestCaseAttribute("C#", "Intermediate", null)]
+        public void _2_VerifyUserIsAbleToUpdateAnExistingSkillWithNewExperienceLevel(string skill, string experienceLevel, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Skill", skill);
+            argumentsOfScenario.Add("Experience Level", experienceLevel);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2. Verify user is able to update an existing Skill with new experience level", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 10
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 11
-testRunner.Given("User logs into Mars application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 12
-testRunner.When("User clicks on the Skills tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 13
-testRunner.And("User edits the \'C#\' skill with \'Intermediate\' experience level", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 14
-testRunner.Then("The experience level for \'C#\' skill should be updated to \'Intermediate\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("3. Verify user is able to delete an existing Skill")]
-        public void _3_VerifyUserIsAbleToDeleteAnExistingSkill()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3. Verify user is able to delete an existing Skill", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 16
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -163,10 +137,45 @@ testRunner.Given("User logs into Mars application", ((string)(null)), ((TechTalk
 testRunner.When("User clicks on the Skills tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 19
-testRunner.And("User deletes the skill \'C#\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And(string.Format("User edits the \'{0}\' skill with \'{1}\' experience level", skill, experienceLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 20
-testRunner.Then("The skill \'C#\' should be deleted successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then(string.Format("The experience level for \'{0}\' skill should be updated to \'{1}\'", skill, experienceLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("3. Verify user is able to delete an existing Skill")]
+        [NUnit.Framework.TestCaseAttribute("C#", null)]
+        public void _3_VerifyUserIsAbleToDeleteAnExistingSkill(string skill, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Skill", skill);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3. Verify user is able to delete an existing Skill", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 27
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 28
+testRunner.Given("User logs into Mars application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 29
+testRunner.When("User clicks on the Skills tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 30
+testRunner.And(string.Format("User deletes the skill \'{0}\'", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 31
+testRunner.Then(string.Format("The skill \'{0}\' should be deleted successfully", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -175,13 +184,17 @@ testRunner.Then("The skill \'C#\' should be deleted successfully", ((string)(nul
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("4. Verify if user is able to add the already existing skill in the Skills section" +
             " under Profile page")]
-        public void _4_VerifyIfUserIsAbleToAddTheAlreadyExistingSkillInTheSkillsSectionUnderProfilePage()
+        [NUnit.Framework.TestCaseAttribute("Manual Testing", "Expert", null)]
+        [NUnit.Framework.TestCaseAttribute("Manual Testing", "Expert", null)]
+        public void _4_VerifyIfUserIsAbleToAddTheAlreadyExistingSkillInTheSkillsSectionUnderProfilePage(string skill, string experienceLevel, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Skill", skill);
+            argumentsOfScenario.Add("Experience Level", experienceLevel);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4. Verify if user is able to add the already existing skill in the Skills section" +
                     " under Profile page", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 22
+#line 37
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -191,22 +204,21 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 23
+#line 38
 testRunner.Given("User logs into Mars application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 24
+#line 39
 testRunner.When("User clicks on the Skills tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 25
-testRunner.And("User adds \'Manual Testing\' skill with \'Expert\' experience level into the Skills l" +
-                        "ist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 40
+testRunner.And(string.Format("User adds \'{0}\' skill with \'{1}\' experience level into the Skills list", skill, experienceLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 26
-testRunner.And("User adds skill \'Manual Tesing\' with \'Expert\' experience level that is already pr" +
-                        "esent in their skills list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 41
+testRunner.And(string.Format("User adds skill \'{0}\' with \'{1}\' experience level that is already present in thei" +
+                            "r skills list", skill, experienceLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 27
-testRunner.Then("The skill \'Manual Testing\' should not be added again in the skills list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 42
+testRunner.Then(string.Format("The skill \'{0}\' should not be added again in the skills list", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -215,13 +227,19 @@ testRunner.Then("The skill \'Manual Testing\' should not be added again in the s
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("5. Verify if user is able to add a skill in the Skills section under Profile page" +
             " with invalid data")]
-        public void _5_VerifyIfUserIsAbleToAddASkillInTheSkillsSectionUnderProfilePageWithInvalidData()
+        [NUnit.Framework.TestCaseAttribute("", "Beginner", null)]
+        [NUnit.Framework.TestCaseAttribute("", "", null)]
+        [NUnit.Framework.TestCaseAttribute("ABC", "", null)]
+        [NUnit.Framework.TestCaseAttribute("!!@!@#", "Basic", null)]
+        public void _5_VerifyIfUserIsAbleToAddASkillInTheSkillsSectionUnderProfilePageWithInvalidData(string skill, string experienceLevel, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Skill", skill);
+            argumentsOfScenario.Add("Experience Level", experienceLevel);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("5. Verify if user is able to add a skill in the Skills section under Profile page" +
                     " with invalid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 29
+#line 51
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -231,17 +249,17 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 30
+#line 52
 testRunner.Given("User logs into Mars application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 31
+#line 53
 testRunner.When("User clicks on the Skills tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 32
-testRunner.And("User adds \'\' skill with \'Beginner\' experience level into the Skills list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 54
+testRunner.And(string.Format("User adds \'{0}\' skill with \'{1}\' experience level into the Skills list", skill, experienceLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 33
-testRunner.Then("Invalid \'skill\' should not be added and error message should be displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 55
+testRunner.Then(string.Format("Invalid \'{0}\' should not be added and error message should be displayed", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
