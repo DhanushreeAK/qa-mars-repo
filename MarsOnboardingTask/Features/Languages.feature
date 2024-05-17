@@ -9,7 +9,6 @@ Then The '<language>' language with '<language level>' language level should be 
 
 Examples: 
 | language | language level |
-|          |                |
 | English  | Fluent         |
 | Hindi    | Basic          |
 
